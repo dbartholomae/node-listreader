@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='stylesheets/application.css' type='text/css'>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <span class='title'>ListReader</span>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        ListReader
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src\ListReader.coffee</td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>ListReader reads in a text file and gives an array of its lines</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'>new ListReader().readList &quot;data&#47;list.txt&quot;, (err, arr) -&gt;
+  console.log el for el in arr</code></pre>
+  </div>
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#readList-dynamic'>
+        ~
+(void)
+<b>readList</b><span>(path, callback)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Reads in a list from a text file and returns the array created. 
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-dynamic'>
+      #
+(void)
+<b>constructor</b><span>(path)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Creates a new ListReader. You can preset the file path as an argument
+to the constructor or give it when calling readList
+The path is relative to the working directory where Node is run.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>(path)</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The path to the file that is to be converted </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='readList-dynamic'>
+      ~
+(void)
+<b>readList</b><span>(path, callback)</span>
+      <br>
+      ~
+(Promise)
+<b>readList</b><span>(path)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Reads in a list from a text file and returns the array created. When the file is read or an error occurs,
+the callback is called. If no callback is given, a promise for the array is returned.
+The path is relative to the working directory where Node is run.</p><p>Please note that the reader discards the first character it encounters as it assumes it to be a Byte Order Mark.</p>
+</div>
+<div class='tags'>
+  <h3>Throws:</h3>
+  <ul class='throw'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>?</tt>
+      )
+      &mdash;
+      <span class='desc'>No path set </span>
+    </li>
+  </ul>
+  <div class='overloads'>
+    <h3>Overloads:</h3>
+    <div class='overload'>
+      <p class='signature'>
+        ~
+(void)
+<b>readList</b><span>(path, callback)</span>
+      </p>
+      <div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>(path)</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The file path of the file. If not set, the path from the constructor will be used </span>
+    </li>
+    <li>
+      <span class='name'>callback</span>
+      <span class='type'>
+        (
+          <tt>function</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The callback (err, result) with err being any errors from fs.createReadStream and result the Array of lines from the file </span>
+    </li>
+  </ul>
+</div>
+    </div>
+    <div class='overload'>
+      <p class='signature'>
+        ~
+(Promise)
+<b>readList</b><span>(path)</span>
+      </p>
+      <div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>(path)</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The file path of the file. If not set, the path from the constructor will be used </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Promise</tt>
+      )
+      &mdash;
+      <span class='desc'>Promise for the array with the file contents </span>
+    </li>
+  </ul>
+</div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  May 14, 15 04:22:10 by
+  <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
+    Codo
+  </a>
+  2.0.9
+  &#10034;
+  <a href='http://twitter.com/netzpirat' target='_parent'>@netzpirat</a>
+  &#10034;
+  <a href='http://twitter.com/_inossidabile' target='_parent'>@_inossidabile</a>
+</div>
+  </body>
+</html>

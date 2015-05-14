@@ -1,0 +1,38 @@
+{
+  "name": "listreader",
+  "version": "1.0.0",
+  "description": "A node module to read lines from a file into an array",
+  "keywords": ["file", "list", "array", "reader"],
+  "homepage": "https://github.com/dbartholomae/node-listreader",
+  "bugs": "https://github.com/dbartholomae/node-listreader/issues",
+  "license": "MIT",
+  "author": "Daniel Bartholomae <daniel@bartholomae.name>",
+  "main": "lib/ListReader.js",
+  "man": "./doc/index.html",
+  "dependencies": {
+    "when": "3.7.3",
+    "split": "0.3.3"
+  },
+  "devDependencies": {
+    "requirejs": "2.1.17",
+    "mocha": "2.2.4",
+    "chai": "2.3.0",
+    "chai-as-promised": "5.0.0",
+    "coffee-script": "1.7.1"
+  },
+  "directories": {
+    "lib": "./lib",
+    "man": "./doc",
+    "example": "./example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbartholomae/node-listreader.git"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "coffee -c -o ./lib ./src",
+    "doc": "codo ./lib",
+    "test": "mocha --compilers coffee:coffee-script/register"
+  }
+}
