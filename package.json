@@ -1,6 +1,6 @@
 {
   "name": "listreader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A node module to read lines from a file into an array",
   "keywords": ["file", "list", "array", "reader"],
   "homepage": "https://github.com/dbartholomae/node-listreader",
@@ -30,7 +30,7 @@
     "url": "https://github.com/dbartholomae/node-listreader.git"
   },
   "scripts": {
-    "prepublish": "npm run build",
+    "pretest": "npm run build",
     "build": "coffee -c -o ./lib ./src",
     "doc": "codo ./lib",
     "test": "mocha --compilers coffee:coffee-script/register"

@@ -40,6 +40,10 @@ describe "A ListReader", ->
     beforeEach ->
       listReader = new ListReader()
 
+    it "returns an error if the file to read does not exist", ->
+      listReader.readList path + "aaa", (err, list) ->
+        expect(err.code).to.equal 'ENOENT'
+
     it "reads a list via callback", (done) ->
       listReader.readList path, (err, list) ->
         expect(list).to.deep.equal expectedList

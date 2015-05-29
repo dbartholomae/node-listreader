@@ -1,14 +1,11 @@
-((factory) ->
+((dependencies, factory) ->
   # Use define if amd compatible define function is defined
   if typeof define is 'function' && define.amd
-    define ['fs', 'split', 'when'], factory
+    define dependencies, factory
   # Use node require if not
   else
-    fs = require 'fs'
-    split = require 'split'
-    When = require 'when'
-    module.exports = factory fs, split, When
-) (fs, split, When) ->
+    module.exports = factory dependencies.map(require)...
+) ['fs', 'split', 'when'], (fs, split, When) ->
 
   # ListReader reads in a text file and gives an array of its lines
   # @example
@@ -20,7 +17,14 @@
     # The path is relative to the working directory where Node is run.
     #
     # @param [String] (path) The path to the file that is to be converted
-    constructor: (@path) ->
+    # @param [Object] (options) A set of options
+    # @option options [String] encoding The encoding to use (see fs.createReadStream documentation). Default: 'utf8'
+    # @option options [Boolean] dropFirstByte Whether to drop the first byte read (BOM in utf8). Default: true
+    constructor: (@path, @options) ->
+      @options ?= {}
+      @options.encoding ?= 'utf8'
+      @options.dropFirstByte ?= true
+
 
     # Reads in a list from a text file and returns the array created. When the file is read or an error occurs,
     # the callback is called. If no callback is given, a promise for the array is returned.
@@ -43,24 +47,29 @@
       path ?= @path
       throw new Error "No path set" unless path?
 
-      result = new Array()
-      firstByte = true
+      promise = When.promise (resolve, reject) =>
+        result = new Array()
+        firstByte = @options.dropFirstByte
+        try
+          stream = fs.createReadStream path,
+            encoding: @options.encoding
+        catch err
+          reject err
 
-      stream = fs.createReadStream path,
-        encoding: 'utf8'
-      .pipe split()
-      .on 'data', (line) ->
-        if firstByte
-          line = line.slice(1) # Remove byte-order mark
-          firstByte = false
-        result.push line
+        stream.pipe split()
+        .on 'error', reject
+        .on 'data', (line) ->
+          if firstByte
+            line = line.slice(1) # Remove byte-order mark
+            firstByte = false
+          result.push line
+        .on 'end', -> resolve result
 
       if callback
-        stream.on 'error', callback
-        .on 'end', (-> callback null, result)
+        promise
+        .catch callback
+        .done (result) -> callback null, result
       else
-        return When.promise (resolve, reject, notify) ->
-          stream.on 'error', reject
-          .on 'end', -> resolve result
+        return promise
 
   return ListReader
