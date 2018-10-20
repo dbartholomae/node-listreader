@@ -10,15 +10,15 @@
   "main": "lib/ListReader.js",
   "man": "./doc/index.html",
   "dependencies": {
-    "when": "3.7.3",
-    "split": "0.3.3"
+    "when": "3.7.8",
+    "split": "1.0.1"
   },
   "devDependencies": {
-    "requirejs": "2.1.17",
-    "mocha": "2.2.4",
-    "chai": "2.3.0",
-    "chai-as-promised": "5.0.0",
-    "coffee-script": "1.7.1"
+    "requirejs": "2.3.6",
+    "mocha": "5.2.0",
+    "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
+    "coffee-script": "1.12.7"
   },
   "directories": {
     "lib": "./lib",
