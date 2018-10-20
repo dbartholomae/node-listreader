@@ -1,4 +1,7 @@
 # node-listreader@1.0.1
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/dbartholomae/node-listreader.svg)](https://greenkeeper.io/)
+
 The **node-listreader** is a node module to read all lines via a buffer from a file into an array:
 
 ```coffeescript
