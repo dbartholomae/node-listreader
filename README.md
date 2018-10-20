@@ -1,4 +1,5 @@
 # node-listreader@1.0.1
+## !!! This package is no longer maintained !!!
 The **node-listreader** is a node module to read all lines via a buffer from a file into an array:
 
 ```coffeescript
